@@ -3,8 +3,9 @@ pragma solidity ^0.8;
 
 
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
+import "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
 
-contract NftAuction is Initializable{
+contract NftAuction is Initializable, UUPSUpgradeable {
 
 
     struct Auction {
@@ -27,7 +28,7 @@ contract NftAuction is Initializable{
     uint256 public nextAuctionId;//下一个拍卖 id
     address public admin;//管理员地址
 
-    function initialize() initializer public{
+    function initialize() initializer public {
         admin = msg.sender;
 
     }
@@ -69,5 +70,11 @@ contract NftAuction is Initializable{
 
         auction.highestBidder = msg.sender;
         auction.highestBid = msg.value;
+    }
+
+
+    function _authorizeUpgrade(address newImplementation) internal override view {
+        //只有管理员可以升级
+        require(msg.sender == admin, "Only admin can upgrade");
     }
 }
