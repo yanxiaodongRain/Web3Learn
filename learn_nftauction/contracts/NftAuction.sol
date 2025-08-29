@@ -4,8 +4,9 @@ pragma solidity ^0.8;
 
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
+import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 
-contract NftAuction is Initializable, UUPSUpgradeable {
+contract NftAuction is Initializable, UUPSUpgradeable, IERC721 {
 
 
     struct Auction {
@@ -40,6 +41,9 @@ contract NftAuction is Initializable, UUPSUpgradeable {
         require(_duration > 1000 * 60, "Duration must be greater than 0");
         require(_startPrice > 0, "Start price must be greater than 0");
 
+        //转移NFT到合约
+        IERC721(_nftAddress).approve(address(this), _tokenId);
+
         auctions[nextAuctionId] = Auction({
             seller: msg.sender,
             duration: _duration,
@@ -71,6 +75,9 @@ contract NftAuction is Initializable, UUPSUpgradeable {
         auction.highestBidder = msg.sender;
         auction.highestBid = msg.value;
     }
+
+    //结束拍卖
+
 
 
     function _authorizeUpgrade(address newImplementation) internal override view {
