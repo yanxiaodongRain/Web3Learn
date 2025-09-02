@@ -75,6 +75,10 @@ contract Market {
         emit PriceChanged(seller, _tokenId, previousPrice, _price);
     }
 
+   function isListed(uint256 _tokenId) external view returns (bool) {
+       return orderOfId[_tokenId].seller != address(0);
+   }
+
     //自动上架
     //当卖家调用 safeTransferFrom 把 NFT 转到合约时，这个函数会被调用，然后直接上架订单
     function onERC721Received(
