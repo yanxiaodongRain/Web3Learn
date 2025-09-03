@@ -6,6 +6,13 @@ import { type State, WagmiProvider } from 'wagmi'
 
 import { getConfig } from '@/wagmi'
 
+import '@rainbow-me/rainbowkit/styles.css';
+
+import {
+  getDefaultConfig,
+  RainbowKitProvider,
+} from '@rainbow-me/rainbowkit';
+
 export function Providers(props: {
   children: ReactNode
   initialState?: State
@@ -16,7 +23,9 @@ export function Providers(props: {
   return (
     <WagmiProvider config={config} initialState={props.initialState}>
       <QueryClientProvider client={queryClient}>
-        {props.children}
+         <RainbowKitProvider>
+            {props.children}
+        </RainbowKitProvider>
       </QueryClientProvider>
     </WagmiProvider>
   )

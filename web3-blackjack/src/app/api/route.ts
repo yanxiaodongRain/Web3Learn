@@ -1,4 +1,5 @@
 
+import { verifyMessage } from "viem"
 
 export interface Card {
     rank: string;
@@ -15,11 +16,13 @@ const gameState: {
     dealerHand: Card[],
     deck: Card[],
     message: string,
+    score: number
 } = {
     playerHand: [],
     dealerHand: [],
     deck: initialDeck,
-    message: "",   
+    message: "",
+    score: 0
 }
 
 
@@ -52,14 +55,27 @@ export function GET() {
         playerHand: gameState.playerHand,
         dealerHand: [gameState.dealerHand[0], { rank: "?", suit: "?" }] as Card[],
         message: gameState.message,
+        score: gameState.score
     }), { status: 200 });
 }
 
 
 export async function POST(request: Request) {
+
+    const body = await request.json();
+    const { action } = body;
+
+    if(action === "auth"){
+        const { address, message, signature } = body;
+        const isValid = verifyMessage({ address, message, signature });
+        if (!isValid) {
+            return new Response(JSON.stringify({ message: "Authentication failed" }), { status: 401 });
+        }else{
+            return new Response(JSON.stringify({ message: "Authentication successful" }), { status: 200 });
+        }
+    }
     //hit or stand
-    const { action } = await request.json()
-    if (action === "hit") { 
+    if (action === "hit") {
         const [cards, newDeck] = getRandomCards(gameState.deck, 1);
         gameState.playerHand.push(...cards);
         gameState.deck = newDeck;
@@ -67,8 +83,10 @@ export async function POST(request: Request) {
         const playerHandValue = calculateHandValue(gameState.playerHand);
         if (playerHandValue === 21) {
             gameState.message = "Black Jack! Player wins!";
+            gameState.score += 100;
         } else if (playerHandValue > 21) {
             gameState.message = "Bust! Player loses!";
+            gameState.score -=100;
         }   
         
     }
@@ -91,14 +109,18 @@ export async function POST(request: Request) {
         const dealerHandValue = calculateHandValue(gameState.dealerHand);
         if (dealerHandValue > 21) {
             gameState.message = "Dealer busts! Player wins!";
+            gameState.score += 100;
         } else if (dealerHandValue === 21) {
             gameState.message = "Dealer Black Jack! Player loses!";
+            gameState.score -= 100;
         } else { 
             const playerHandValue = calculateHandValue(gameState.playerHand);
             if (playerHandValue > dealerHandValue) {
                 gameState.message = "Player wins!";
+                gameState.score += 100;
             } else if (dealerHandValue > playerHandValue) {
                 gameState.message = "Player loses!";
+                gameState.score -= 100;
             } else {
                 gameState.message = "Draw!";
             }
@@ -112,6 +134,7 @@ export async function POST(request: Request) {
         playerHand: gameState.playerHand,
         dealerHand: gameState.message === ""? [gameState.dealerHand[0], { rank: "?", suit: "?" }] as Card[] : gameState.dealerHand,
         message: gameState.message,
+        score: gameState.score
     }), { status: 200 });
 }
 
