@@ -5,12 +5,10 @@
 // 
 
 
-// test if user can get a wrapped nft in dest chain
-
 //dest chain -> source chain
 // test if user can burn the wnft and send ccip message on dest chain
 
-// test if user have the nft unloacked on source chain
+// 
 
 
 
@@ -61,12 +59,38 @@ describe("source chain -> dest chain", async function () {
 
         await nft.approve(nftPoolLockAndRelease.target, 0);
 
-        ccipSimulator.requestLinkFromFaucet(nftPoolLockAndRelease, ethers.parseEther("10"));
+        await ccipSimulator.requestLinkFromFaucet(nftPoolLockAndRelease, ethers.parseEther("10"));
 
-        nftPoolLockAndRelease.lockAndSendNFT(0, firstAccount, chainSelector, wnftPoolBurnAndMint.target);
+        await nftPoolLockAndRelease.lockAndSendNFT(0, firstAccount, chainSelector, wnftPoolBurnAndMint.target);
 
-        expect(await nft.ownerOf(0)).to.equal(firstAccount);
+        expect(await nft.ownerOf(0)).to.equal(nftPoolLockAndRelease);
 
     })
 
+    it("test if user can get a wrapped nft in dest chain",async function() {
+        const owner = await wnft.ownerOf(0);
+        expect(owner).to.equal(firstAccount);
+    })
+
 });
+
+
+describe("dest chain -> source chain tests", async function () {
+
+    it("test if user can burn the wnft and send ccip message on dest chain", async function () { 
+        await wnft.approve(wnftPoolBurnAndMint.target, 0);
+
+        await ccipSimulator.requestLinkFromFaucet(wnftPoolBurnAndMint, ethers.parseEther("10"));
+
+        await wnftPoolBurnAndMint.burnAndSendNFT(0, firstAccount, chainSelector, nftPoolLockAndRelease.target);
+
+        expect(await wnft.totalSupply()).to.equal(0);
+    })
+
+    
+    it("test if user have the nft unloacked on source chain", async function () { 
+        const owner = await nft.ownerOf(0);
+        expect(owner).to.equal(firstAccount);
+    })
+
+})
