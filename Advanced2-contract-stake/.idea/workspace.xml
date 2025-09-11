@@ -4,15 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7a45526a-8441-406d-9adf-4ec618819d51" name="Changes" comment="" />
+    <list default="true" id="7a45526a-8441-406d-9adf-4ec618819d51" name="Changes" comment="Advanced2-contract-stake: MetaNode质押项目">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 7
-}]]></component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="32S4X0IhLhcxcNp19sg0dZVrc5e" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -21,12 +26,13 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "F:\\Android\\Web3\\Advanced2-contract-stake-main\\stake-fe\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "F:\\Android\\Web3\\Web3Learn\\Advanced2-contract-stake\\stake-fe\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -46,10 +52,35 @@
       <option name="presentableId" value="Default" />
       <updated>1757400675237</updated>
       <workItem from="1757400676484" duration="8296000" />
+      <workItem from="1757572965971" duration="305000" />
     </task>
+    <task id="LOCAL-00001" summary="Advanced2-contract-stake: MetaNode质押项目">
+      <option name="closed" value="true" />
+      <created>1757573282043</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1757573282043</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Advanced2-contract-stake: MetaNode质押项目" />
+    <option name="LAST_COMMIT_MESSAGE" value="Advanced2-contract-stake: MetaNode质押项目" />
   </component>
 </project>

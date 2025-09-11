@@ -2,7 +2,7 @@ import { Abi, Address, GetContractReturnType, PublicClient, WalletClient, getCon
 import { defaultChainId } from './wagmi'
 import { viemClients } from "./viem"
 
-export const getContract = <TAbi extends Abi | readonly unknown[], TWalletClient extends WalletClient>({
+export const getContract = <TAbi extends Abi | readonly unknown[], TWalletClient extends WalletClient>({//这里解构的是对象
   abi,
   address,
   chainId = defaultChainId,

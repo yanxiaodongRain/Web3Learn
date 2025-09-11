@@ -16,9 +16,9 @@ export function useContract<TAbi extends Abi>(
 ) {
   const currentChainId = useChainId()
   const chainId = options?.chainId || currentChainId
-  const { data: walletClient } = useWalletClient()
+  const { data: walletClient } = useWalletClient()//直接取出 data 并重命名为 walletClient，后面代码更简洁
 
-  return useMemo(() => {
+  return useMemo(() => {//useMemo只要依赖没变化，就复用上一次的值；依赖变了，才重新计算。避免每次渲染都重复算
     if (!addressOrAddressMap || !abi || !chainId) return null
     let address: Address | undefined
     if (typeof addressOrAddressMap === 'string') address = addressOrAddressMap
