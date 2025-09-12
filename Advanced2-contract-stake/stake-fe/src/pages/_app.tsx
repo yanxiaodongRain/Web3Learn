@@ -41,7 +41,6 @@ function MyApp({ Component, pageProps }: AppProps) {
                 pauseOnHover
                 theme="light"
                 toastClassName="custom-toast"
-                bodyClassName="custom-toast-body"
                 progressClassName="custom-toast-progress"
               />
               <Layout><Component {...pageProps} /></Layout>

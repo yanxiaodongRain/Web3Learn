@@ -4,7 +4,7 @@ import { useStakeContract } from "../../hooks/useContract";
 import useRewards from "../../hooks/useRewards";
 import { useCallback, useState } from "react";
 import { Pid } from "../../utils";
-import { useAccount, useWalletClient, useBalance } from "wagmi";
+import { useAccount, useWalletClient, useBalance, useWaitForTransactionReceipt  } from "wagmi";
 import { parseUnits } from "viem";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { toast } from "react-toastify";
@@ -16,19 +16,20 @@ import { Input } from '../../components/ui/Input';
 import { Card } from '../../components/ui/Card';
 
 const Home = () => {
-  const stakeContract = useStakeContract();
-  const { address, isConnected } = useAccount();
-  const { rewardsData, poolData, canClaim, refresh } = useRewards();
   const [amount, setAmount] = useState('');
   const [loading, setLoading] = useState(false);
   const [claimLoading, setClaimLoading] = useState(false);
-  const { data } = useWalletClient();
+
+  const stakeContract = useStakeContract();//获取合约对象
+  const { address, isConnected } = useAccount();//获取账号的地址和连接状态
+  const { rewardsData, poolData, canClaim, refresh } = useRewards();
+  const { data } = useWalletClient();//当前连接的钱包客户端
   const { data: balance } = useBalance({
-    address: address,
+    address: address,//钱包地址
     query: {
-      enabled: isConnected,
-      refetchInterval: 10000,
-      refetchIntervalInBackground: false,
+      enabled: isConnected,//控制是否自动执行请求
+      refetchInterval: 10000,//自动轮询时间（毫秒）
+      refetchIntervalInBackground: false,//页面切换到后台是否继续轮询
     }
   });
 
@@ -49,10 +50,10 @@ const Home = () => {
       const tx = await stakeContract.write.depositETH([], { value: parseUnits(amount, 18) });
       const res = await waitForTransactionReceipt(data, { hash: tx });
       console.log({ res })
+      setLoading(false);
       if (res.status === 'success') {
         toast.success('Stake successful!');
         setAmount('');
-        setLoading(false);
         refresh(); // 刷新奖励数据
         return
       }
@@ -124,7 +125,7 @@ const Home = () => {
               <div className="flex flex-col justify-center flex-1 min-w-0 items-center sm:items-start">
                 <span className="text-gray-400 text-base sm:text-lg mb-1">Staked Amount</span>
                 <span className="text-3xl sm:text-5xl font-bold bg-gradient-to-r from-primary-400 to-primary-600 bg-clip-text text-transparent leading-tight break-all">
-                  {parseFloat(poolData.stTokenAmount || '0').toFixed(4)} ETH
+                  {isConnected?parseFloat(poolData.stTokenAmount || '0').toFixed(4):parseFloat('0').toFixed(4)} ETH
                 </span>
               </div>
             </div>

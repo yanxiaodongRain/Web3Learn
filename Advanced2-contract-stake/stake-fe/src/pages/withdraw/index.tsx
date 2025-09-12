@@ -69,11 +69,15 @@ const Withdraw = () => {
       const tx = await stakeContract.write.unstake([Pid, parseUnits(amount, 18)]);
       console.log('stakeContract', stakeContract)
       console.log('Pid', Pid)
-      await waitForTransactionReceipt(data, { hash: tx });
-      toast.success('Unstake successful!');
-      setAmount('');
+      const res = await waitForTransactionReceipt(data, { hash: tx });
       setUnstakeLoading(false);
-      getUserData();
+      if (res.status === 'success') {
+        toast.success('Unstake successful!');
+        setAmount('');
+        getUserData();
+      } else { 
+        toast.error('Unstake failed!')
+      }
     } catch (error) {
       setUnstakeLoading(false);
       toast.error('Transaction failed. Please try again.');
@@ -86,10 +90,14 @@ const Withdraw = () => {
     try {
       setWithdrawLoading(true);
       const tx = await stakeContract.write.withdraw([Pid]);
-      await waitForTransactionReceipt(data, { hash: tx });
-      toast.success('Withdraw successful!');
+      const res = await waitForTransactionReceipt(data, { hash: tx });
       setWithdrawLoading(false);
-      getUserData();
+      if (res.status === 'success') {
+        toast.success('Withdraw successful!');
+        getUserData();
+      } else { 
+        toast.error('Withdraw failed!')
+      }
     } catch (error) {
       setWithdrawLoading(false);
       toast.error('Transaction failed. Please try again.');
