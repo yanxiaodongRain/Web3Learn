@@ -4,8 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7a45526a-8441-406d-9adf-4ec618819d51" name="Changes" comment="Advanced2-contract-stake: MetaNode质押项目">
+    <list default="true" id="7a45526a-8441-406d-9adf-4ec618819d51" name="Changes" comment="Advanced2-contract-stake: 增加注释">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stake-fe/src/components/ui/Input.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/stake-fe/src/components/ui/Input.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stake-fe/src/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/stake-fe/src/pages/_app.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stake-fe/src/pages/home/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/stake-fe/src/pages/home/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stake-fe/src/pages/withdraw/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/stake-fe/src/pages/withdraw/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,19 +27,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "F:\\Android\\Web3\\Web3Learn\\Advanced2-contract-stake\\stake-fe\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;F:\\Android\\Web3\\Web3Learn\\Advanced2-contract-stake\\stake-fe\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -53,6 +57,10 @@
       <updated>1757400675237</updated>
       <workItem from="1757400676484" duration="8296000" />
       <workItem from="1757572965971" duration="305000" />
+      <workItem from="1757586903584" duration="66000" />
+      <workItem from="1757656947612" duration="1253000" />
+      <workItem from="1757663870326" duration="684000" />
+      <workItem from="1757665458508" duration="1501000" />
     </task>
     <task id="LOCAL-00001" summary="Advanced2-contract-stake: MetaNode质押项目">
       <option name="closed" value="true" />
@@ -62,7 +70,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757573282043</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Advanced2-contract-stake: 增加注释">
+      <option name="closed" value="true" />
+      <created>1757586948982</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1757586948982</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -81,6 +97,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Advanced2-contract-stake: MetaNode质押项目" />
-    <option name="LAST_COMMIT_MESSAGE" value="Advanced2-contract-stake: MetaNode质押项目" />
+    <MESSAGE value="Advanced2-contract-stake: 增加注释" />
+    <option name="LAST_COMMIT_MESSAGE" value="Advanced2-contract-stake: 增加注释" />
   </component>
 </project>
