@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7a45526a-8441-406d-9adf-4ec618819d51" name="Changes" comment="Advanced2-contract-stake: 前端加注释">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../dogs-nft/Dogs.sol" beforeDir="false" afterPath="$PROJECT_DIR$/../dogs-nft/Dogs.sol" afterDir="false" />
-    </list>
+    <list default="true" id="7a45526a-8441-406d-9adf-4ec618819d51" name="Changes" comment="Advanced2-contract-stake: 前端加注释" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -82,6 +79,7 @@
       <workItem from="1761881775663" duration="12187000" />
       <workItem from="1762136001674" duration="2273000" />
       <workItem from="1762159148071" duration="437000" />
+      <workItem from="1762762634658" duration="22000" />
     </task>
     <task id="LOCAL-00001" summary="Advanced2-contract-stake: MetaNode质押项目">
       <option name="closed" value="true" />
